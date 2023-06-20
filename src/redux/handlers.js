@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 
 export const handlePanding = state => {
-  console.log('pending')
   state.isLoading = true;
 };
 export const handleRejected = (state, { payload }) => {

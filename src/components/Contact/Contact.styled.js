@@ -19,10 +19,11 @@ const slideIn = keyframes`
 //   }
 // `;
 export const Item = styled.li`
-  width: 300px;
-  background-color: #100d1039;
-  border-radius: 10px;
+  width: 420px;
+  /* background-color: #100d1039; */
+  /* border-radius: 10px; */
   padding: 5px;
+  border-bottom: 1px solid grey;
 
   display: flex;
   padding-left: 10px;

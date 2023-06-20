@@ -12,7 +12,6 @@ export function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
-  console.log('isLoading:', isLoading);
 
   useEffect(() => {
     dispatch(getContacts());

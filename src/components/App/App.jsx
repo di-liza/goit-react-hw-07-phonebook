@@ -11,8 +11,10 @@ export function App() {
 
   return (
     <Container>
+      <h2 className="phoneBookTitle">PhoneBook</h2>
       <div className="form-wrapper">
-        <h2 className="title">PhoneBook</h2>
+        <h3 className="title">Create a New Contact</h3>
+
         <ContactForm />
       </div>
 
