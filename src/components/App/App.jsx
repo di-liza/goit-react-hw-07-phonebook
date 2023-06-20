@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { ContactForm, ContactList, Filter, Notification } from 'components';
+import { ContactForm, ContactList, Filter } from 'components';
 import { selectContacts } from '../../redux';
 import { Container } from './App.styled.js';
 import { ToastContainer } from 'react-toastify';
@@ -23,9 +23,6 @@ export function App() {
         <div>
           <Filter />
           <ContactList />
-          {contacts.length === 0 && (
-            <Notification text={'No contacts are available.'} />
-          )}
         </div>
       </div>
       <ToastContainer

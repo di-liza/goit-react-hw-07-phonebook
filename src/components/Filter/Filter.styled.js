@@ -10,7 +10,7 @@ export const FilterBox = styled.div`
   .styled-input {
     display: block;
     height: 30px;
-    width: 100%;
+    width: 420px;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 21px;
     padding: 0 10px;
