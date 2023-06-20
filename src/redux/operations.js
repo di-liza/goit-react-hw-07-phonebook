@@ -10,3 +10,11 @@ export const getContacts = createAsyncThunk(
     return data;
   }
 );
+
+export const removeContact = createAsyncThunk(
+  'contacts/removeContact',
+  async id => {
+    const { data } = await axios.delete(`/contacts/${id}`);
+    return data;
+  }
+);

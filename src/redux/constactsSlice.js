@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getContacts } from './operations';
+import { getContacts, removeContact } from './operations';
 
 // fetch('https://649095021e6aa71680cb85c3.mockapi.io/contacts')
 //   .then(res => res.json())
@@ -28,6 +28,16 @@ export const contactsSlice = createSlice({
       state.isLoading = true;
     },
     [getContacts.rejected]: (state, { payload }) => {
+      state.error = payload;
+    },
+    // ____________________-
+    [removeContact.fulfilled]: (state, { payload }) => {
+      return state.contacts.filter(contact => contact.id !== payload);
+    },
+    [removeContact.pending]: state => {
+      state.isLoading = true;
+    },
+    [removeContact.rejected]: (state, { payload }) => {
       state.error = payload;
     },
   },
