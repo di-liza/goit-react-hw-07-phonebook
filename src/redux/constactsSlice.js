@@ -19,6 +19,8 @@ export const contactsSlice = createSlice({
   extraReducers: {
     // _______________GET_______________
     [getContacts.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = null;
       state.contacts = payload;
     },
     [getContacts.pending]: state => {
@@ -26,24 +28,32 @@ export const contactsSlice = createSlice({
     },
     [getContacts.rejected]: (state, { payload }) => {
       state.error = payload;
+      state.isLoading = false;
     },
     // _______________REMOVE_______________
     [removeContact.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = null;
       state.contacts.splice(
         state.contacts.findIndex(contact => contact.id === payload.id),
         1
       );
+      state.isLoading = false;
+      state.error = null;
     },
     [removeContact.pending]: state => {
       state.isLoading = true;
     },
     [removeContact.rejected]: (state, { payload }) => {
       state.error = payload;
+      state.isLoading = false;
     },
 
     // _______________CREATE_______________
 
     [createContact.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = null;
       state.contacts.push(payload);
     },
     [createContact.pending]: state => {
@@ -51,6 +61,7 @@ export const contactsSlice = createSlice({
     },
     [createContact.rejected]: (state, { payload }) => {
       state.error = payload;
+      state.isLoading = false;
     },
   },
 });

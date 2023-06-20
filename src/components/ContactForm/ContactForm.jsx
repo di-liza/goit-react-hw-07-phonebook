@@ -6,6 +6,7 @@ import { selectContacts } from '../../redux';
 
 export function ContactForm() {
   const contacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
 
   const handleContactFormSubmit = e => {
