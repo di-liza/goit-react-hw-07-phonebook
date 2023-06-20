@@ -17,13 +17,8 @@ export const contactsSlice = createSlice({
       .addCase(getContacts.fulfilled, handleGetContactsFullfiled)
       .addCase(createContact.fulfilled, handleCreateContactFullfiled)
       .addCase(removeContact.fulfilled, handleRemoveContactFullfiled)
-      .addMatcher(action => {
-        console.log(action.type.endsWith('/pending'));
-        action.type.endsWith('/pending');
-      }, handlePanding)
-      .addMatcher(action => {
-        action.type.endsWith('/rejected');
-      }, handleRejected);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePanding)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
