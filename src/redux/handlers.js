@@ -1,11 +1,5 @@
 import { toast } from 'react-toastify';
 
-export const handleGetContactsFullfiled = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = null;
-  state.contacts = payload;
-};
-
 export const handlePanding = state => {
   state.isLoading = true;
 };
@@ -14,6 +8,14 @@ export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
 };
 
+// GET
+export const handleGetContactsFullfiled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.contacts = payload;
+};
+
+// REMOVE
 export const handleRemoveContactFullfiled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
@@ -26,6 +28,7 @@ export const handleRemoveContactFullfiled = (state, { payload }) => {
   state.error = null;
 };
 
+// CREATE
 export const handleCreateContactFullfiled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;

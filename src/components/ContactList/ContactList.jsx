@@ -5,22 +5,8 @@ import { selectContacts, selectFiter } from '../../redux';
 import { useEffect } from 'react';
 import { getContacts } from 'redux/operations';
 import { selectIsLoading } from '../../redux';
-import { Oval } from 'react-loader-spinner';
 
-const loader = (
-  <Oval
-    height={80}
-    width={80}
-    color="#ffffff"
-    wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
-    wrapperClass=""
-    visible={true}
-    ariaLabel="oval-loading"
-    secondaryColor="#ffffff"
-    strokeWidth={2}
-    strokeWidthSecondary={2}
-  />
-);
+import { Loader } from 'components';
 
 export function ContactList() {
   const dispatch = useDispatch();
@@ -39,7 +25,7 @@ export function ContactList() {
   return (
     <>
       {isLoading ? (
-        loader
+        <Loader height={80} weigth={80} />
       ) : (
         <ListBox>
           <ul>
