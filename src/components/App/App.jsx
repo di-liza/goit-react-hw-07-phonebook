@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { ContactForm, ContactList, Filter, Notification } from 'components';
 import { selectContacts } from '../../redux';
 import { Container } from './App.styled.js';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
   const contacts = useSelector(selectContacts);
@@ -24,6 +26,18 @@ export function App() {
           )}
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Container>
   );
 }

@@ -4,6 +4,8 @@ import { createContact } from '../../redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux';
 
+import { toast } from 'react-toastify';
+
 export function ContactForm() {
   const contacts = useSelector(selectContacts);
 
@@ -22,7 +24,9 @@ export function ContactForm() {
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
     if (isContactExists) {
-      return alert(`${newContact.name} is already in contacts`);
+      return toast.error(`"${newContact.name}" is already in contacts 😣`, {
+        position: 'top-center',
+      });
     }
 
     dispatch(createContact(newContact));

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getContacts, removeContact, createContact } from './operations';
+import { toast } from 'react-toastify';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -38,6 +39,7 @@ export const contactsSlice = createSlice({
         state.contacts.findIndex(contact => contact.id === payload.id),
         1
       );
+      toast.success(`Contact "${payload.name}" successfully deleted 👌`);
       state.isLoading = false;
       state.error = null;
     },
