@@ -7,7 +7,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import contactsSlice from './constactsSlice';
 import filterSlice from './filterSlice';
 
-console.log('contactsSlice:', contactsSlice);
 // import {
 //   FLUSH,
 //   REHYDRATE,

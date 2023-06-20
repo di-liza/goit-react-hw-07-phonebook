@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 
 import { ContactForm, ContactList, Filter, Notification } from 'components';
-import { getContactsSelector } from '../../redux';
+import { selectContacts } from '../../redux';
 import { Container } from './App.styled.js';
 
 export function App() {
-  const contacts = useSelector(getContactsSelector);
+  const contacts = useSelector(selectContacts);
 
   return (
     <Container>
