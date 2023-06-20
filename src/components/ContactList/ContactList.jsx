@@ -25,7 +25,7 @@ export function ContactList() {
   return (
     <>
       {isLoading ? (
-        <Loader height={80} weigth={80} />
+        <Loader height={80} width={80} />
       ) : (
         <ListBox>
           <ul>
