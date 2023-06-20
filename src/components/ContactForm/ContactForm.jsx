@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { Form } from './ContactForm.styled';
-import { addContact } from 'redux/constactsSlice';
+// import { addContact } from 'redux/constactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsSelector } from '../../redux';
 
@@ -24,7 +24,7 @@ export function ContactForm() {
       return alert(`${newContact.name} is already in contacts`);
     }
 
-    dispatch(addContact(newContact));
+    // dispatch(addContact(newContact));
     e.currentTarget.reset();
   };
 

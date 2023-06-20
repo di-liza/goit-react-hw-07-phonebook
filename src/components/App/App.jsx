@@ -19,9 +19,9 @@ export function App() {
         <div>
           <Filter />
           <ContactList />
-          {contacts.length === 0 && (
+          {/* {contacts.length === 0 && (
             <Notification text={'No contacts are available.'} />
-          )}
+          )} */}
         </div>
       </div>
     </Container>
