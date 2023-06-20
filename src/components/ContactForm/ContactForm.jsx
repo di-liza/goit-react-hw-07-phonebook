@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { Form } from './ContactForm.styled';
-import { createContact } from '../../redux/operations';
+import { addContact } from '../../redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux';
 
@@ -29,7 +29,7 @@ export function ContactForm() {
       });
     }
 
-    dispatch(createContact(newContact));
+    dispatch(addContact(newContact));
     e.currentTarget.reset();
   };
 

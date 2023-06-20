@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Item } from './Contact.styled';
 import { ReactComponent as DeleteIcon } from '../icons/delete.svg';
 import { useDispatch } from 'react-redux';
-import { removeContact } from '../../redux/operations';
+import { deleteContact } from '../../redux/operations';
 
 export function Contact({ contact }) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export function Contact({ contact }) {
         className="delete-btn"
         type="button"
         onClick={() => {
-          dispatch(removeContact(contact.id));
+          dispatch(deleteContact(contact.id));
         }}
       >
         <DeleteIcon width={20} height={20} />
