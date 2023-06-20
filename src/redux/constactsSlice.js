@@ -1,14 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getContacts, removeContact, createContact } from './operations';
+import { initialState } from './contactsInicialState';
 import { toast } from 'react-toastify';
+
+const handleGetContactsFullfiled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.contacts = payload;
+};
+
+const handlePanding = state => {
+  state.isLoading = true;
+};
+const handleRejected = (state, { payload }) => {
+  state.error = payload;
+  state.isLoading = false;
+};
+
+const handleRemoveContactFullfiled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.contacts.splice(
+    state.contacts.findIndex(contact => contact.id === payload.id),
+    1
+  );
+  toast.info(`Contact "${payload.name}" deleted 👌`);
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleCreateContactFullfiled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  toast.success(`"${payload.name}" successfully added to your contacts 🔥`);
+  state.contacts.unshift(payload);
+};
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    contacts: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   // reducers: {
   //   addContact(state, action) {
   //     return (state = [action.payload, ...state]);
@@ -17,54 +47,23 @@ export const contactsSlice = createSlice({
   //     return (state = state.filter(contact => contact.id !== action.payload));
   //   },
   // },
-  extraReducers: {
+  extraReducers: builder => {
     // _______________GET_______________
-    [getContacts.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts = payload;
-    },
-    [getContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [getContacts.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
+    builder
+      .addCase(getContacts.fulfilled, handleGetContactsFullfiled)
+      .addCase(getContacts.pending, handlePanding)
+      .addCase(getContacts.rejected, handleRejected);
+
     // _______________REMOVE_______________
-    [removeContact.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts.splice(
-        state.contacts.findIndex(contact => contact.id === payload.id),
-        1
-      );
-      toast.success(`Contact "${payload.name}" successfully deleted 👌`);
-      state.isLoading = false;
-      state.error = null;
-    },
-    [removeContact.pending]: state => {
-      state.isLoading = true;
-    },
-    [removeContact.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
-
+    builder
+      .addCase(removeContact.fulfilled, handleRemoveContactFullfiled)
+      .addCase(removeContact.pending, handlePanding)
+      .addCase(removeContact.rejected, handleRejected);
     // _______________CREATE_______________
-
-    [createContact.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts.push(payload);
-    },
-    [createContact.pending]: state => {
-      state.isLoading = true;
-    },
-    [createContact.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
+    builder
+      .addCase(createContact.fulfilled, handleCreateContactFullfiled)
+      .addCase(createContact.pending, handlePanding)
+      .addCase(createContact.rejected, handleRejected);
   },
 });
 
