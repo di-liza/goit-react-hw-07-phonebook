@@ -32,7 +32,10 @@ export const contactsSlice = createSlice({
     },
     // ____________________-
     [removeContact.fulfilled]: (state, { payload }) => {
-      return state.contacts.filter(contact => contact.id !== payload);
+      state.contacts.splice(
+        state.contacts.findIndex(contact => contact.id === payload.id),
+        1
+      );
     },
     [removeContact.pending]: state => {
       state.isLoading = true;
