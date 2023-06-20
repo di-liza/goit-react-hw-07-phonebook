@@ -32,7 +32,7 @@ export const Container = styled.div`
     margin-left: 20px;
     margin-top: 20px;
     height: 100%;
-    width: 800px;
+    width: 700px;
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -74,7 +74,7 @@ export const Container = styled.div`
     border: none;
 
     margin-right: 700px;
-    margin-top: 200px;
+    margin-top: 150px;
   }
 
   .title {
