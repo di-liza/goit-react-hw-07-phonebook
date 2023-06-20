@@ -18,3 +18,11 @@ export const removeContact = createAsyncThunk(
     return data;
   }
 );
+
+export const createContact = createAsyncThunk(
+  'contacts/createContact',
+  async ({ name, phone }) => {
+    const { data } = await axios.post('/contacts', { name, phone });
+    return data;
+  }
+);

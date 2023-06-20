@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { Form } from './ContactForm.styled';
-// import { addContact } from 'redux/constactsSlice';
+import { createContact } from '../../redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux';
 
@@ -14,7 +14,7 @@ export function ContactForm() {
     const newContact = {
       name: e.currentTarget.elements.name.value,
       id: nanoid(),
-      number: e.currentTarget.elements.number.value,
+      phone: e.currentTarget.elements.number.value,
     };
 
     const isContactExists = contacts.some(
@@ -24,7 +24,7 @@ export function ContactForm() {
       return alert(`${newContact.name} is already in contacts`);
     }
 
-    // dispatch(addContact(newContact));
+    dispatch(createContact(newContact));
     e.currentTarget.reset();
   };
 

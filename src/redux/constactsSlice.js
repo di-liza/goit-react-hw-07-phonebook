@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getContacts, removeContact } from './operations';
-
-// fetch('https://649095021e6aa71680cb85c3.mockapi.io/contacts')
-//   .then(res => res.json())
-//   .then(console.log);
+import { getContacts, removeContact, createContact } from './operations';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -21,6 +17,7 @@ export const contactsSlice = createSlice({
   //   },
   // },
   extraReducers: {
+    // _______________GET_______________
     [getContacts.fulfilled]: (state, { payload }) => {
       state.contacts = payload;
     },
@@ -30,7 +27,7 @@ export const contactsSlice = createSlice({
     [getContacts.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    // ____________________-
+    // _______________REMOVE_______________
     [removeContact.fulfilled]: (state, { payload }) => {
       state.contacts.splice(
         state.contacts.findIndex(contact => contact.id === payload.id),
@@ -41,6 +38,18 @@ export const contactsSlice = createSlice({
       state.isLoading = true;
     },
     [removeContact.rejected]: (state, { payload }) => {
+      state.error = payload;
+    },
+
+    // _______________CREATE_______________
+
+    [createContact.fulfilled]: (state, { payload }) => {
+      state.contacts.push(payload);
+    },
+    [createContact.pending]: state => {
+      state.isLoading = true;
+    },
+    [createContact.rejected]: (state, { payload }) => {
       state.error = payload;
     },
   },
