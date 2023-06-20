@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Oval } from 'react-loader-spinner';
 
 export const Loader = ({ height, width }) => {
@@ -15,4 +16,9 @@ export const Loader = ({ height, width }) => {
       strokeWidthSecondary={2}
     />
   );
+};
+
+Loader.propTypes = {
+  height: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
 };

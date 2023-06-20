@@ -1,14 +1,9 @@
-import { useSelector } from 'react-redux';
-
 import { ContactForm, ContactList, Filter } from 'components';
-import { selectContacts } from '../../redux';
 import { Container } from './App.styled.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
-  const contacts = useSelector(selectContacts);
-
   return (
     <Container>
       <h2 className="phoneBookTitle">PhoneBook</h2>
